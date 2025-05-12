@@ -111,6 +111,7 @@ export default {
 			fontFamily: {
 				'poppins': ['Poppins', 'sans-serif'],
 				'libre': ['Libre Baskerville', 'serif'],
+				'outfit': ['Outfit', 'sans-serif'],
 			},
 		}
 	},

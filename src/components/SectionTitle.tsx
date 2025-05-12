@@ -24,11 +24,11 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       )}
     >
       {subtitle && (
-        <span className="inline-block mb-2 text-perself-primary font-poppins uppercase tracking-wider text-sm">
+        <span className="inline-block mb-2 text-perself-primary font-outfit uppercase tracking-wider text-sm">
           {subtitle}
         </span>
       )}
-      <h2 className="font-bold">{title}</h2>
+      <h2 className="font-bold font-outfit">{title}</h2>
       <div className={cn(
         "h-1 w-24 bg-perself-primary mt-4",
         centered ? "mx-auto" : ""

@@ -6,7 +6,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain, Heart, CheckCircle } from "lucide-react";
+import { CheckCircle, Brain, Heart } from "lucide-react";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("counselling");
@@ -30,27 +30,27 @@ const Services = () => {
             onValueChange={setActiveTab}
             className="w-full"
           >
-            <TabsList className="grid grid-cols-3 mb-12">
+            <TabsList className="grid w-full grid-cols-3 mb-12 rounded-xl overflow-hidden shadow-sm">
               <TabsTrigger
                 value="counselling"
-                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6"
+                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all"
               >
                 <Brain className="mr-2 h-5 w-5" />
-                Counselling & Therapy
+                <span>Counselling & Therapy</span>
               </TabsTrigger>
               <TabsTrigger
                 value="healing"
-                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6"
+                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all"
               >
                 <Heart className="mr-2 h-5 w-5" />
-                Healing Modalities
+                <span>Healing Modalities</span>
               </TabsTrigger>
               <TabsTrigger
                 value="assessments"
-                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6"
+                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all"
               >
                 <CheckCircle className="mr-2 h-5 w-5" />
-                Assessments & Tools
+                <span>Assessments & Tools</span>
               </TabsTrigger>
             </TabsList>
 
@@ -248,13 +248,13 @@ const Services = () => {
       {/* Call to Action */}
       <section className="py-16 bg-perself-accent">
         <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold mb-6">Find the Right Service for You</h2>
-          <p className="text-lg max-w-2xl mx-auto mb-8">
+          <h2 className="text-3xl font-bold mb-6 font-outfit">Find the Right Service for You</h2>
+          <p className="text-lg max-w-2xl mx-auto mb-8 font-libre">
             Not sure which service best fits your needs? Schedule a free
             15-minute consultation with one of our experts who can guide you.
           </p>
           <Link to="/contact">
-            <Button className="bg-perself-primary hover:bg-perself-dark">
+            <Button className="bg-perself-primary hover:bg-perself-dark font-outfit">
               Contact Us for Guidance
             </Button>
           </Link>
