@@ -28,7 +28,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Calendar as CalendarIcon, CheckCircle } from "lucide-react";
+import { Calendar as CalendarIcon, CheckCircle, Brain, Heart } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
