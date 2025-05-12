@@ -33,27 +33,27 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-custom",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "frosted-glass shadow-sm py-3"
+          ? "bg-background/80 backdrop-blur-md shadow-sm py-3"
           : "bg-transparent py-5"
       )}
     >
-      <div className="container-custom flex items-center justify-between">
+      <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center relative z-20">
-          <span className="text-perself-primary font-outfit text-xl font-bold tracking-tight">
-            Perself<span className="text-perself-dark">Mindcare</span>
+          <span className="text-primary font-semibold text-xl tracking-tight">
+            Perself<span className="text-foreground">Mindcare</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-10">
+        <nav className="hidden md:flex items-center space-x-8">
           <NavLink to="/" currentPath={location.pathname}>Home</NavLink>
           <NavLink to="/about" currentPath={location.pathname}>About Us</NavLink>
           <NavLink to="/services" currentPath={location.pathname}>Services</NavLink>
           <NavLink to="/contact" currentPath={location.pathname}>Contact</NavLink>
           <Link to="/booking">
-            <Button className="magic-button shine-effect">
+            <Button>
               Book a Session
             </Button>
           </Link>
@@ -66,16 +66,16 @@ const Navbar = () => {
           aria-label="Menu"
         >
           {isMenuOpen ? (
-            <X className="h-6 w-6 text-perself-primary" />
+            <X className="h-6 w-6 text-primary" />
           ) : (
-            <Menu className="h-6 w-6 text-perself-primary" />
+            <Menu className="h-6 w-6 text-primary" />
           )}
         </button>
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-md z-10 flex items-center justify-center">
-            <nav className="flex flex-col items-center space-y-8">
+          <div className="md:hidden fixed inset-0 bg-background/95 backdrop-blur-md z-10 flex items-center justify-center">
+            <nav className="flex flex-col items-center space-y-6">
               <NavLink 
                 to="/" 
                 currentPath={location.pathname} 
@@ -109,7 +109,7 @@ const Navbar = () => {
                 Contact
               </NavLink>
               <Link to="/booking" onClick={toggleMenu}>
-                <Button className="magic-button shine-effect mt-4 w-40">
+                <Button className="mt-4 w-40">
                   Book a Session
                 </Button>
               </Link>
@@ -136,19 +136,16 @@ const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children, onClick, m
     <Link
       to={to}
       className={cn(
-        "relative group",
-        mobile ? "font-outfit text-xl" : "font-outfit text-foreground",
-        isActive ? "text-perself-primary font-medium" : "hover:text-perself-primary transition-custom"
+        "relative transition-colors duration-200",
+        mobile ? "text-lg" : "text-sm font-medium",
+        isActive ? "text-primary font-medium" : "text-foreground/80 hover:text-primary"
       )}
       onClick={onClick}
     >
       {children}
-      <div
-        className={cn(
-          "h-0.5 w-full bg-perself-primary absolute bottom-0 left-0 transform scale-x-0 origin-left transition-transform duration-300 ease-out",
-          isActive ? "scale-x-100" : "group-hover:scale-x-100"
-        )}
-      ></div>
+      {isActive && (
+        <div className="h-0.5 w-full bg-primary absolute -bottom-1 left-0"></div>
+      )}
     </Link>
   );
 };

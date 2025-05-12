@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 
 interface ServiceCardProps {
   title: string;
@@ -22,49 +23,32 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   variant = "default",
 }) => {
   return (
-    <Link to={link}>
-      <div
-        className={cn(
-          "group hover-lift magic-card h-full rounded-2xl p-6 md:p-8 transition-custom relative overflow-hidden",
-          variant === "gradient" && "bg-gradient-to-br from-white to-perself-light/30",
-          variant === "outline" && "border-2 border-perself-primary/20 hover:border-perself-primary/50",
-          className
-        )}
-      >
-        {variant === "gradient" && (
-          <div className="absolute -right-10 -top-10 w-40 h-40 bg-perself-primary/10 rounded-full blur-2xl group-hover:bg-perself-primary/20 transition-all"></div>
-        )}
-        
-        <div className={cn(
-          "mb-6 w-16 h-16 rounded-2xl flex items-center justify-center text-perself-primary relative animate-pulse-glow",
-          variant === "gradient" 
-            ? "bg-white shadow-md" 
-            : "bg-perself-light group-hover:bg-perself-primary group-hover:text-white transition-custom"
-        )}>
-          <span className="text-2xl">{icon}</span>
-        </div>
-        
-        <h3 className={cn(
-          "text-xl font-outfit font-semibold mb-3 group-hover:text-perself-primary transition-custom",
-          variant === "gradient" && "bg-gradient-to-r from-perself-dark to-perself-primary bg-clip-text text-transparent"
-        )}>
-          {title}
-        </h3>
-        
-        <p className="text-muted-foreground mb-4">{description}</p>
-        
-        <div className={cn(
-          "flex items-center font-poppins",
-          variant === "gradient" ? "text-perself-dark" : "text-perself-primary"
-        )}>
-          <span className="mr-2 font-medium">Learn More</span>
-          <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-2" />
-        </div>
-        
-        {variant === "outline" && (
-          <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-perself-primary to-perself-secondary group-hover:w-full transition-all duration-500 ease-out"></div>
-        )}
-      </div>
+    <Link to={link} className="block h-full">
+      <Card className={cn(
+        "h-full transition-all hover:shadow-md overflow-hidden",
+        variant === "gradient" && "bg-gradient-to-br from-muted to-background",
+        variant === "outline" && "border-primary/20 hover:border-primary/50",
+        className
+      )}>
+        <CardHeader>
+          <div className={cn(
+            "w-12 h-12 rounded-md flex items-center justify-center mb-4 text-primary bg-primary/10",
+            variant === "gradient" ? "bg-background" : ""
+          )}>
+            <span className="text-xl">{icon}</span>
+          </div>
+          <h3 className="text-xl font-medium">{title}</h3>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground">{description}</p>
+        </CardContent>
+        <CardFooter>
+          <div className="flex items-center text-primary font-medium text-sm">
+            <span>Learn More</span>
+            <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-2" />
+          </div>
+        </CardFooter>
+      </Card>
     </Link>
   );
 };

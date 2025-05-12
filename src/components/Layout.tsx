@@ -17,9 +17,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-background to-background/90">
+    <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
-      <main className="flex-grow pt-16 overflow-hidden">
+      <main className="flex-grow pt-16">
         {children}
       </main>
       <Footer />

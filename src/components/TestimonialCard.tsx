@@ -2,6 +2,7 @@
 import React from "react";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 interface TestimonialCardProps {
   name: string;
@@ -23,69 +24,56 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   variant = "default",
 }) => {
   return (
-    <div
-      className={cn(
-        "magic-card relative group overflow-hidden",
-        variant === "highlight" && "border-perself-primary/30 bg-gradient-to-br from-white to-perself-light/30",
-        variant === "minimal" && "bg-transparent border border-perself-primary/10 hover:bg-white hover:shadow-sm",
-        className
-      )}
-    >
-      {variant === "highlight" && (
-        <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-perself-primary/10 rounded-full blur-3xl group-hover:bg-perself-primary/20 transition-all"></div>
-      )}
-      
-      <div className="flex items-center justify-between mb-6 relative z-10">
-        <div className="flex items-center">
-          {image ? (
-            <div className="relative mr-4">
-              <div className="absolute inset-0 rounded-full bg-perself-primary/20 blur-md -z-10 group-hover:bg-perself-primary/30 transition-all"></div>
-              <img
-                src={image}
-                alt={name}
-                className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
-              />
+    <Card className={cn(
+      "h-full transition-all hover:shadow-md",
+      variant === "highlight" && "bg-gradient-to-br from-card to-muted",
+      variant === "minimal" && "bg-transparent border-primary/10 hover:bg-card",
+      className
+    )}>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            {image ? (
+              <div className="relative mr-4">
+                <img
+                  src={image}
+                  alt={name}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4">
+                <span className="text-base font-medium">{name.charAt(0)}</span>
+              </div>
+            )}
+            <div>
+              <h4 className="font-medium text-sm">{name}</h4>
+              {title && <p className="text-xs text-muted-foreground">{title}</p>}
             </div>
-          ) : (
-            <div className="w-14 h-14 rounded-full bg-perself-light text-perself-primary flex items-center justify-center mr-4 border-2 border-white shadow-sm">
-              <span className="text-xl font-bold">{name.charAt(0)}</span>
-            </div>
-          )}
-          <div>
-            <h4 className="font-semibold text-base">{name}</h4>
-            {title && <p className="text-sm text-muted-foreground">{title}</p>}
+          </div>
+          <div className="flex">
+            {Array(5)
+              .fill(0)
+              .map((_, i) => (
+                <Star
+                  key={i}
+                  size={14}
+                  className={cn(
+                    i < rating
+                      ? "text-yellow-400 fill-yellow-400"
+                      : "text-gray-300"
+                  )}
+                />
+              ))}
           </div>
         </div>
-        <div className="flex">
-          {Array(5)
-            .fill(0)
-            .map((_, i) => (
-              <Star
-                key={i}
-                size={16}
-                className={cn(
-                  i < rating
-                    ? "text-yellow-400 fill-yellow-400"
-                    : "text-gray-300"
-                )}
-              />
-            ))}
-        </div>
-      </div>
-      
-      <blockquote className={cn(
-        "text-muted-foreground italic relative z-10",
-        variant === "highlight" && "text-perself-dark"
-      )}>
-        <span className="text-4xl absolute -top-2 -left-1 font-serif text-perself-primary/20">"</span>
-        <span className="relative">{quote}</span>
-        <span className="text-4xl absolute -bottom-8 -right-1 font-serif text-perself-primary/20">"</span>
-      </blockquote>
-      
-      {variant === "default" && (
-        <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-perself-primary to-perself-secondary group-hover:w-full transition-all duration-500 ease-out"></div>
-      )}
-    </div>
+      </CardHeader>
+      <CardContent>
+        <blockquote className="italic text-muted-foreground text-sm">
+          "{quote}"
+        </blockquote>
+      </CardContent>
+    </Card>
   );
 };
 

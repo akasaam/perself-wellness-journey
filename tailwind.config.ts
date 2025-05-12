@@ -130,6 +130,7 @@ export default {
 				'shine': 'shine 2s ease-in-out infinite',
 			},
 			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
 				'poppins': ['Poppins', 'sans-serif'],
 				'libre': ['Libre Baskerville', 'serif'],
 				'outfit': ['Outfit', 'sans-serif'],
