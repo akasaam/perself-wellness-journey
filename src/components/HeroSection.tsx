@@ -14,6 +14,7 @@ interface HeroSectionProps {
   secondaryCtaLink?: string;
   backgroundImage?: string;
   className?: string;
+  variant?: "default" | "centered" | "gradient";
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -26,11 +27,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   secondaryCtaLink,
   backgroundImage,
   className,
+  variant = "default",
 }) => {
   return (
     <section
       className={cn(
-        "relative py-20 md:py-32 flex items-center",
+        "relative py-24 md:py-36 flex items-center",
         backgroundImage ? "text-white" : "text-foreground",
         className
       )}
@@ -38,7 +40,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {backgroundImage && (
         <div className="absolute inset-0 z-0">
           <div
-            className="absolute inset-0 bg-gradient-to-r from-perself-dark/80 to-perself-dark/50 z-0"
+            className="absolute inset-0 bg-gradient-to-r from-perself-dark/90 via-perself-dark/70 to-perself-dark/60 z-0"
             aria-hidden="true"
           ></div>
           <img
@@ -49,30 +51,52 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       )}
 
+      {variant === "gradient" && !backgroundImage && (
+        <div className="absolute inset-0 magic-gradient opacity-10" aria-hidden="true"></div>
+      )}
+
       <div className="container-custom relative z-10">
-        <div className="max-w-2xl">
+        <div className={cn(
+          "max-w-2xl",
+          variant === "centered" && "mx-auto text-center"
+        )}>
           {subtitle && (
-            <span className="inline-block mb-3 text-perself-light font-poppins text-lg">
+            <span className={cn(
+              "inline-block mb-3 font-poppins text-lg md:text-xl",
+              backgroundImage ? "text-perself-light" : "text-perself-primary"
+            )}>
               {subtitle}
             </span>
           )}
-          <h1 className="mb-6 font-bold leading-tight animate-fade-up">{title}</h1>
+          <h1 className="mb-6 font-bold leading-tight animate-fade-up">
+            {title.split(' ').map((word, i) => (
+              <span key={i} className="relative inline-block">
+                <span className="relative z-10">{word} </span>
+                {variant === "gradient" && i === title.split(' ').length - 1 && (
+                  <span className="absolute bottom-1 left-0 w-full h-3 bg-perself-primary/20 -z-0" aria-hidden="true"></span>
+                )}
+              </span>
+            ))}
+          </h1>
           {description && (
-            <p className="text-lg md:text-xl mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            <p className="text-lg md:text-xl mb-8 animate-fade-up opacity-90" style={{ animationDelay: "0.2s" }}>
               {description}
             </p>
           )}
-          <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          <div className={cn(
+            "flex flex-wrap gap-4 animate-fade-up",
+            variant === "centered" && "justify-center"
+          )} style={{ animationDelay: "0.3s" }}>
             {ctaText && ctaLink && (
               <Link to={ctaLink}>
-                <Button className="bg-perself-primary hover:bg-perself-dark text-white font-poppins font-medium py-6 px-8 rounded-full">
+                <Button className="magic-button">
                   {ctaText}
                 </Button>
               </Link>
             )}
             {secondaryCtaText && secondaryCtaLink && (
               <Link to={secondaryCtaLink}>
-                <Button variant="outline" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 border-white text-white font-poppins font-medium py-6 px-8 rounded-full">
+                <Button variant="outline" className="frosted-glass hover:bg-white/30 border-white/80 text-foreground font-poppins font-medium py-6 px-8 rounded-full hover:border-perself-primary">
                   {secondaryCtaText}
                 </Button>
               </Link>

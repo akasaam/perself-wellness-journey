@@ -69,6 +69,11 @@ export default {
 					dark: '#3A6959',
 					accent: '#F7EEE2',
 					secondary: '#6A8EAE',
+					tertiary: '#F4D9BA',
+					highlight: '#FF9770',
+					success: '#8ACB88',
+					warning: '#FFD166',
+					error: '#EF6351',
 				}
 			},
 			borderRadius: {
@@ -100,19 +105,40 @@ export default {
 				'fade-up': {
 					'0%': { opacity: '0', transform: 'translateY(10px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 0 rgba(94, 155, 138, 0)' },
+					'50%': { boxShadow: '0 0 15px rgba(94, 155, 138, 0.4)' },
+				},
+				'shine': {
+					'0%': { left: '-100%', opacity: '0' },
+					'50%': { opacity: '0.5' },
+					'100%': { left: '100%', opacity: '0' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
-				'fade-up': 'fade-up 0.7s ease-out'
+				'fade-up': 'fade-up 0.7s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 3s infinite',
+				'shine': 'shine 2s ease-in-out infinite',
 			},
 			fontFamily: {
 				'poppins': ['Poppins', 'sans-serif'],
 				'libre': ['Libre Baskerville', 'serif'],
 				'outfit': ['Outfit', 'sans-serif'],
 			},
+			boxShadow: {
+				'magic': '0 10px 30px -10px rgba(94, 155, 138, 0.15)',
+				'magic-hover': '0 10px 40px -10px rgba(94, 155, 138, 0.25)',
+				'magic-sm': '0 2px 10px -2px rgba(94, 155, 138, 0.1)',
+			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

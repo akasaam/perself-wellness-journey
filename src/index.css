@@ -75,7 +75,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-libre;
+    @apply bg-background text-foreground font-outfit;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -83,25 +83,29 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply text-3xl md:text-4xl leading-tight;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-2xl md:text-3xl leading-tight;
   }
 
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply text-xl md:text-2xl leading-tight;
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
   }
 }
 
 @layer components {
   .container-custom {
-    @apply container max-w-7xl mx-auto px-4 md:px-6;
+    @apply container max-w-7xl mx-auto px-4 md:px-8;
   }
 
   .transition-custom {
@@ -109,14 +113,89 @@
   }
 
   .btn-primary {
-    @apply bg-perself-primary hover:bg-perself-dark text-white font-poppins font-medium py-3 px-6 rounded-full transition-custom;
+    @apply bg-perself-primary hover:bg-perself-dark text-white font-poppins font-medium py-3 px-6 rounded-full transition-custom shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply bg-perself-light hover:bg-perself-accent text-perself-dark font-poppins font-medium py-3 px-6 rounded-full transition-custom;
+    @apply bg-perself-light hover:bg-perself-accent text-perself-dark font-poppins font-medium py-3 px-6 rounded-full transition-custom shadow-sm hover:shadow-md;
   }
   
   .section-padding {
     @apply py-16 md:py-24;
   }
+
+  /* Magic UI specific styles */
+  .magic-card {
+    @apply rounded-2xl bg-white p-6 md:p-8 shadow-sm hover:shadow-md transition-custom border border-transparent hover:border-perself-primary/10;
+  }
+  
+  .magic-gradient {
+    @apply bg-gradient-to-r from-perself-primary/80 to-perself-secondary/80;
+  }
+  
+  .magic-glow {
+    @apply relative after:absolute after:inset-0 after:bg-perself-primary/20 after:blur-xl after:rounded-full after:opacity-0 hover:after:opacity-100 after:transition-opacity;
+  }
+  
+  .magic-input {
+    @apply bg-white/80 backdrop-blur-sm border border-perself-primary/20 focus:border-perself-primary/40 rounded-xl shadow-sm focus:shadow-md transition-custom;
+  }
+  
+  .magic-button {
+    @apply rounded-full bg-gradient-to-r from-perself-primary to-perself-secondary text-white font-poppins font-medium py-3 px-8 shadow-sm hover:shadow-md hover:translate-y-[-2px] active:translate-y-0 transition-custom;
+  }
+  
+  .frosted-glass {
+    @apply backdrop-blur-md bg-white/70 dark:bg-black/30 border border-white/20 dark:border-white/10;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:translate-y-[-5px];
+  }
+}
+
+/* Magic UI animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(94, 155, 138, 0); }
+  50% { box-shadow: 0 0 20px 5px rgba(94, 155, 138, 0.3); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite;
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 70%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: all 0.7s;
+}
+
+.shine-effect:hover::after {
+  left: 100%;
 }
