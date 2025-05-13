@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
@@ -250,7 +249,7 @@ const Booking = () => {
             centered
           />
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto px-4 w-full">
             {/* Step Indicators */}
             <div className="flex justify-between mb-10 relative">
               <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
@@ -292,7 +291,7 @@ const Booking = () => {
             </div>
 
             {/* Booking Form */}
-            <Card className="border-2">
+            <Card className="border-2 shadow-sm">
               <CardHeader>
                 <CardTitle>
                   {step === 1
