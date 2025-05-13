@@ -26,7 +26,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <div className="flex items-center">
             {image ? <div className="relative mr-4">
                 <img src={image} alt={name} className="w-10 h-10 rounded-full object-cover" />
-              </div> : <div className="w-15 h-15 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4">
+              </div> : <div className="w-15 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4">
                 <span className="text-base font-medium">{name.charAt(0)}</span>
               </div>}
             <div>
