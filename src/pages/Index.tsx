@@ -1,4 +1,3 @@
-
 import React from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
@@ -8,38 +7,20 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Brain, CheckCircle, Calendar } from "lucide-react";
-
 const Index = () => {
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero Section */}
-      <HeroSection
-        title="Healing begins with acceptance."
-        description="At Perself Mindcare, we believe in a holistic approach to mental wellness. Our team of experts provides personalized care to guide you towards a healthier and more balanced life."
-        ctaText="Book a Session"
-        ctaLink="/booking"
-        secondaryCtaText="Take a Quiz"
-        secondaryCtaLink="/services"
-        backgroundImage="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
-        className="min-h-[90vh]"
-      />
+      <HeroSection title="Healing begins with acceptance." description="At Perself Mindcare, we believe in a holistic approach to mental wellness. Our team of experts provides personalized care to guide you towards a healthier and more balanced life." ctaText="Book a Session" ctaLink="/booking" secondaryCtaText="Take a Quiz" secondaryCtaLink="/services" backgroundImage="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" className="min-h-[90vh]" />
 
       {/* About Section */}
       <section className="section-padding bg-perself-light">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
-              <img
-                src="https://images.unsplash.com/photo-1626909235047-69a5d239d885?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Tranquil setting for mental wellness"
-                className="rounded-2xl shadow-lg"
-              />
+              <img alt="Tranquil setting for mental wellness" className="rounded-2xl shadow-lg" src="https://i.pinimg.com/originals/c3/ff/e4/c3ffe4bb8002c5570eeae547c0310d83.gif" />
             </div>
             <div className="animate-fade-up">
-              <SectionTitle
-                title="Welcome to Perself Mindcare"
-                subtitle="About Us"
-              />
+              <SectionTitle title="Welcome to Perself Mindcare" subtitle="About Us" />
               <p className="text-lg mb-6">
                 Perself Mindcare is a holistic wellness center dedicated to nurturing 
                 your mental health through evidence-based therapies and traditional 
@@ -64,32 +45,12 @@ const Index = () => {
       {/* Services Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <SectionTitle
-            title="Our Services"
-            subtitle="How We Can Help"
-            centered
-            className="max-w-2xl mx-auto"
-          />
+          <SectionTitle title="Our Services" subtitle="How We Can Help" centered className="max-w-2xl mx-auto" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <ServiceCard
-              title="Counselling & Therapy"
-              description="One-on-one sessions using evidence-based approaches like CBT and Play Therapy to address issues including PTSD, depression, and anxiety."
-              icon={<Brain size={24} />}
-              link="/services"
-            />
-            <ServiceCard
-              title="Healing Modalities"
-              description="Alternative healing approaches including Reiki, Crystal Healing, Floral Therapy, and many other traditional methods to restore balance."
-              icon={<Heart size={24} />}
-              link="/services"
-            />
-            <ServiceCard
-              title="Assessments & Tools"
-              description="Interactive questionnaires and tools to help gauge your mental wellbeing, including stress levels and self-esteem evaluations."
-              icon={<CheckCircle size={24} />}
-              link="/services"
-            />
+            <ServiceCard title="Counselling & Therapy" description="One-on-one sessions using evidence-based approaches like CBT and Play Therapy to address issues including PTSD, depression, and anxiety." icon={<Brain size={24} />} link="/services" />
+            <ServiceCard title="Healing Modalities" description="Alternative healing approaches including Reiki, Crystal Healing, Floral Therapy, and many other traditional methods to restore balance." icon={<Heart size={24} />} link="/services" />
+            <ServiceCard title="Assessments & Tools" description="Interactive questionnaires and tools to help gauge your mental wellbeing, including stress levels and self-esteem evaluations." icon={<CheckCircle size={24} />} link="/services" />
           </div>
         </div>
       </section>
@@ -123,31 +84,12 @@ const Index = () => {
       {/* Testimonials */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
-          <SectionTitle
-            title="What Our Clients Say"
-            subtitle="Testimonials"
-            centered
-          />
+          <SectionTitle title="What Our Clients Say" subtitle="Testimonials" centered />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <TestimonialCard
-              name="Sarah Johnson"
-              title="Anxiety Management Client"
-              quote="The CBT techniques I learned at Perself have completely changed how I handle my anxiety. I finally feel like I'm in control of my thoughts."
-              rating={5}
-            />
-            <TestimonialCard
-              name="Michael Lee"
-              title="Depression Recovery Client"
-              quote="After my first Reiki session, I felt a shift in my energy that I hadn't experienced before. Combined with therapy, it's been transformative."
-              rating={5}
-            />
-            <TestimonialCard
-              name="Emma Rodriguez"
-              title="Stress Management Client"
-              quote="The holistic approach at Perself addressed aspects of my well-being that other therapists missed. I'm grateful for their comprehensive care."
-              rating={5}
-            />
+            <TestimonialCard name="Sarah Johnson" title="Anxiety Management Client" quote="The CBT techniques I learned at Perself have completely changed how I handle my anxiety. I finally feel like I'm in control of my thoughts." rating={5} />
+            <TestimonialCard name="Michael Lee" title="Depression Recovery Client" quote="After my first Reiki session, I felt a shift in my energy that I hadn't experienced before. Combined with therapy, it's been transformative." rating={5} />
+            <TestimonialCard name="Emma Rodriguez" title="Stress Management Client" quote="The holistic approach at Perself addressed aspects of my well-being that other therapists missed. I'm grateful for their comprehensive care." rating={5} />
           </div>
         </div>
       </section>
@@ -155,19 +97,11 @@ const Index = () => {
       {/* Blog Preview/Tips Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <SectionTitle
-            title="Wellness Tips & Insights"
-            subtitle="From Our Blog"
-            centered
-          />
+          <SectionTitle title="Wellness Tips & Insights" subtitle="From Our Blog" centered />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm transition-custom hover:shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Meditation practice"
-                className="w-full h-48 object-cover"
-              />
+              <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Meditation practice" className="w-full h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">
                   5 Daily Mindfulness Practices
@@ -176,21 +110,14 @@ const Index = () => {
                   Simple techniques to incorporate mindfulness into your everyday
                   routine for improved mental clarity.
                 </p>
-                <Link
-                  to="/blog/mindfulness-practices"
-                  className="text-perself-primary font-medium hover:text-perself-dark"
-                >
+                <Link to="/blog/mindfulness-practices" className="text-perself-primary font-medium hover:text-perself-dark">
                   Read More →
                 </Link>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm transition-custom hover:shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Healthy nutrition"
-                className="w-full h-48 object-cover"
-              />
+              <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Healthy nutrition" className="w-full h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">
                   The Mind-Diet Connection
@@ -199,21 +126,14 @@ const Index = () => {
                   Exploring how nutrition affects mental health and mood
                   regulation through gut-brain connection.
                 </p>
-                <Link
-                  to="/blog/mind-diet-connection"
-                  className="text-perself-primary font-medium hover:text-perself-dark"
-                >
+                <Link to="/blog/mind-diet-connection" className="text-perself-primary font-medium hover:text-perself-dark">
                   Read More →
                 </Link>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm transition-custom hover:shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1535483139859-9631c313ebcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Mental health journaling"
-                className="w-full h-48 object-cover"
-              />
+              <img src="https://images.unsplash.com/photo-1535483139859-9631c313ebcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mental health journaling" className="w-full h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">
                   Journaling for Mental Health
@@ -222,10 +142,7 @@ const Index = () => {
                   How keeping a daily journal can help process emotions and
                   increase self-awareness.
                 </p>
-                <Link
-                  to="/blog/journaling-mental-health"
-                  className="text-perself-primary font-medium hover:text-perself-dark"
-                >
+                <Link to="/blog/journaling-mental-health" className="text-perself-primary font-medium hover:text-perself-dark">
                   Read More →
                 </Link>
               </div>
@@ -254,12 +171,7 @@ const Index = () => {
               updates, and exclusive resources.
             </p>
             <form className="flex flex-col md:flex-row gap-4 justify-center">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="px-4 py-3 rounded-full flex-grow max-w-md border-gray-300 focus:border-perself-primary focus:ring focus:ring-perself-light focus:ring-opacity-50"
-                required
-              />
+              <input type="email" placeholder="Your email address" className="px-4 py-3 rounded-full flex-grow max-w-md border-gray-300 focus:border-perself-primary focus:ring focus:ring-perself-light focus:ring-opacity-50" required />
               <Button className="bg-perself-primary hover:bg-perself-dark rounded-full">
                 Subscribe
               </Button>
@@ -267,8 +179,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Index;
