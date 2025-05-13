@@ -7,21 +7,10 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Brain, CheckCircle, Calendar } from "lucide-react";
-
 const Index = () => {
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero Section */}
-      <HeroSection 
-        title="Healing begins with acceptance." 
-        description="At Perself Mindcare, we believe in a holistic approach to mental wellness. Our team of experts provides personalized care to guide you towards a healthier and more balanced life." 
-        ctaText="Book a Session" 
-        ctaLink="/booking" 
-        secondaryCtaText="Take a Quiz" 
-        secondaryCtaLink="/services" 
-        backgroundImage="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
-        className="min-h-[90vh]" 
-      />
+      <HeroSection title="Healing begins with acceptance." description="At Perself Mindcare, we believe in a holistic approach to mental wellness. Our team of experts provides personalized care to guide you towards a healthier and more balanced life." ctaText="Book a Session" ctaLink="/booking" secondaryCtaText="Take a Quiz" secondaryCtaLink="/services" backgroundImage="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" className="min-h-[90vh]" />
 
       {/* About Section */}
       <section className="section-padding bg-perself-light">
@@ -98,27 +87,9 @@ const Index = () => {
           <SectionTitle title="What Our Clients Say" subtitle="Testimonials" centered />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <TestimonialCard 
-              name="Sarah Johnson" 
-              title="Anxiety Management Client" 
-              quote="The CBT techniques I learned at Perself have completely changed how I handle my anxiety. I finally feel like I'm in control of my thoughts." 
-              rating={5} 
-              image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" 
-            />
-            <TestimonialCard 
-              name="Michael Lee" 
-              title="Depression Recovery Client" 
-              quote="After my first Reiki session, I felt a shift in my energy that I hadn't experienced before. Combined with therapy, it's been transformative." 
-              rating={5} 
-              image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" 
-            />
-            <TestimonialCard 
-              name="Emma Rodriguez" 
-              title="Stress Management Client" 
-              quote="The holistic approach at Perself addressed aspects of my well-being that other therapists missed. I'm grateful for their comprehensive care." 
-              rating={5} 
-              image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" 
-            />
+            <TestimonialCard name="Sarah Johnson" title="Anxiety Management Client" quote="The CBT techniques I learned at Perself have completely changed how I handle my anxiety. I finally feel like I'm in control of my thoughts." rating={5} image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" />
+            <TestimonialCard name="Michael Lee" title="Depression Recovery Client" quote="After my first Reiki session, I felt a shift in my energy that I hadn't experienced before. Combined with therapy, it's been transformative." rating={5} image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" />
+            <TestimonialCard name="Emma Rodriguez" title="Stress Management Client" quote="The holistic approach at Perself addressed aspects of my well-being that other therapists missed. I'm grateful for their comprehensive care." rating={5} image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" />
           </div>
         </div>
       </section>
@@ -162,7 +133,7 @@ const Index = () => {
             </div>
 
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm transition-custom hover:shadow-md">
-              <img src="https://images.unsplash.com/photo-1535483139859-9631c313ebcb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mental health journaling" className="w-full h-48 object-cover" />
+              <img alt="Mental health journaling" className="w-full h-48 object-cover" src="https://i.pinimg.com/736x/96/5b/a2/965ba23717993bcc1f897101952bc9f8.jpg" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">
                   Journaling for Mental Health
@@ -208,8 +179,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Index;
