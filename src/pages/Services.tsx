@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
@@ -31,29 +30,31 @@ const Services = () => {
             onValueChange={setActiveTab}
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-3 mb-12 rounded-xl overflow-hidden shadow-md">
-              <TabsTrigger
-                value="counselling"
-                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all"
-              >
-                <Brain className="mr-2 h-5 w-5" />
-                <span>Counselling & Therapy</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="healing"
-                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all"
-              >
-                <Heart className="mr-2 h-5 w-5" />
-                <span>Healing Modalities</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="assessments"
-                className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all"
-              >
-                <CheckCircle className="mr-2 h-5 w-5" />
-                <span>Assessments & Tools</span>
-              </TabsTrigger>
-            </TabsList>
+            <div className="flex justify-center mb-12">
+              <TabsList className="grid grid-cols-3 rounded-xl overflow-hidden shadow-md w-full max-w-3xl mx-auto">
+                <TabsTrigger
+                  value="counselling"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all flex items-center justify-center"
+                >
+                  <Brain className="mr-2 h-5 w-5" />
+                  <span>Counselling & Therapy</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="healing"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all flex items-center justify-center"
+                >
+                  <Heart className="mr-2 h-5 w-5" />
+                  <span>Healing Modalities</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="assessments"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all flex items-center justify-center"
+                >
+                  <CheckCircle className="mr-2 h-5 w-5" />
+                  <span>Assessments & Tools</span>
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
             {/* Counselling & Therapy Content */}
             <TabsContent value="counselling" className="animate-fade-in">
