@@ -1,7 +1,10 @@
+
 import React from "react";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 interface TestimonialCardProps {
   name: string;
   title?: string;
@@ -11,6 +14,7 @@ interface TestimonialCardProps {
   className?: string;
   variant?: "default" | "minimal" | "highlight";
 }
+
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   name,
   title,
@@ -20,15 +24,27 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   className,
   variant = "default"
 }) => {
-  return <Card className={cn("h-full transition-all hover:shadow-md", variant === "highlight" && "bg-gradient-to-br from-card to-muted", variant === "minimal" && "bg-transparent border-primary/10 hover:bg-card", className)}>
+  return (
+    <Card 
+      className={cn(
+        "h-full transition-all hover:shadow-md", 
+        variant === "highlight" && "bg-gradient-to-br from-card to-muted", 
+        variant === "minimal" && "bg-transparent border-primary/10 hover:bg-card", 
+        className
+      )}
+    >
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            {image ? <div className="relative mr-4">
-                <img src={image} alt={name} className="w-10 h-10 rounded-full object-cover" />
-              </div> : <div className="w-15 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4">
-                <span className="text-base font-medium">{name.charAt(0)}</span>
-              </div>}
+            <Avatar className="mr-4 h-10 w-10">
+              <AvatarImage 
+                src={image || `https://i.pravatar.cc/150?u=${name}`} 
+                alt={name} 
+              />
+              <AvatarFallback className="bg-perself-primary/10 text-perself-primary">
+                {name.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
             <div>
               <h4 className="font-medium text-sm">{name}</h4>
               {title && <p className="text-xs text-muted-foreground">{title}</p>}
@@ -44,6 +60,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           "{quote}"
         </blockquote>
       </CardContent>
-    </Card>;
+    </Card>
+  );
 };
+
 export default TestimonialCard;
