@@ -52,7 +52,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </Button>
               </Link>}
             {secondaryCtaText && secondaryCtaLink && <Link to={secondaryCtaLink}>
-                <Button variant="outline" size="lg" className="">
+                <Button variant="outline" size="lg" className="text-gray-800">
                   {secondaryCtaText}
                 </Button>
               </Link>}
