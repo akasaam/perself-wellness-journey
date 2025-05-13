@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
@@ -31,24 +32,24 @@ const Services = () => {
             className="w-full"
           >
             <div className="flex justify-center mb-12">
-              <TabsList className="grid grid-cols-3 rounded-xl overflow-hidden shadow-md w-full max-w-3xl mx-auto">
+              <TabsList className="rounded-full overflow-hidden shadow-sm w-full max-w-3xl mx-auto bg-muted/30 p-1.5">
                 <TabsTrigger
                   value="counselling"
-                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all flex items-center justify-center"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full"
                 >
                   <Brain className="mr-2 h-5 w-5" />
                   <span>Counselling & Therapy</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="healing"
-                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all flex items-center justify-center"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full"
                 >
                   <Heart className="mr-2 h-5 w-5" />
                   <span>Healing Modalities</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="assessments"
-                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-6 font-outfit font-medium transition-all flex items-center justify-center"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full"
                 >
                   <CheckCircle className="mr-2 h-5 w-5" />
                   <span>Assessments & Tools</span>
