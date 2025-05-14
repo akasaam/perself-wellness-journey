@@ -24,7 +24,7 @@ const BookingContent: React.FC = () => {
           centered
         />
 
-        <div className="max-w-2xl mx-auto px-4 w-full">
+        <div className="max-w-7xl mx-auto px-4 w-full">
           <BookingStepIndicator />
           <BookingForm />
         </div>

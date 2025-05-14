@@ -1,5 +1,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { format } from "date-fns";
+import { useToast } from "@/hooks/use-toast";
 
 type Practitioner = {
   id: string;
@@ -186,7 +188,3 @@ export const BookingProvider: React.FC<{ children: ReactNode }> = ({ children })
 
   return <BookingContext.Provider value={contextValue}>{children}</BookingContext.Provider>;
 };
-
-// Fix missing import
-import { format } from "date-fns";
-import { useToast } from "@/hooks/use-toast";
