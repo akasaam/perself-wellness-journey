@@ -42,7 +42,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             {title}
           </h1>
-          {description && <p className="text-lg text-muted-foreground">
+          {description && <p className="text-lg text-muted-foreground text-gray-200">
               {description}
             </p>}
           <div className={cn("flex flex-wrap gap-4 pt-2", variant === "centered" && "justify-center")}>
