@@ -76,7 +76,7 @@ const Booking: React.FC = () => {
         title="Book Your Session"
         subtitle="Schedule an Appointment"
         description="Take the first step towards your healing journey by scheduling a session with one of our experienced practitioners."
-        backgroundImage="https://images.unsplash.com/photo-1606836591695-4d58a73acba9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
       />
 
       <BookingProvider>
