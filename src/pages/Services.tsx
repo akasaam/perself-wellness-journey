@@ -7,9 +7,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Brain, Heart } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import StressQuiz from "@/components/quizzes/StressQuiz";
+import SelfEsteemQuiz from "@/components/quizzes/SelfEsteemQuiz";
+import MemoryGame from "@/components/quizzes/MemoryGame";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("counselling");
+  const [isStressQuizOpen, setIsStressQuizOpen] = useState(false);
+  const [isSelfEsteemQuizOpen, setIsSelfEsteemQuizOpen] = useState(false);
+  const [isMemoryGameOpen, setIsMemoryGameOpen] = useState(false);
 
   return (
     <Layout>
@@ -168,18 +174,21 @@ const Services = () => {
                       title="Are You Stressed Out? Quiz"
                       description="Evaluate your current stress levels and identify potential stressors in your life."
                       id="stress-quiz"
+                      onOpen={() => setIsStressQuizOpen(true)}
                     />
                     
                     <AssessmentCard 
                       title="How Do You Rate Your Self-Esteem? Quiz"
                       description="Assess your self-esteem levels and get personalized recommendations to build confidence."
                       id="self-esteem-quiz"
+                      onOpen={() => setIsSelfEsteemQuizOpen(true)}
                     />
                     
                     <AssessmentCard 
                       title="Memory Game"
                       description="A fun interactive game to test and improve your memory while promoting mindfulness."
                       id="memory-game"
+                      onOpen={() => setIsMemoryGameOpen(true)}
                     />
                   </div>
                 </div>
@@ -205,6 +214,11 @@ const Services = () => {
           </Link>
         </div>
       </section>
+
+      {/* Quiz Dialogs */}
+      <StressQuiz isOpen={isStressQuizOpen} onClose={() => setIsStressQuizOpen(false)} />
+      <SelfEsteemQuiz isOpen={isSelfEsteemQuizOpen} onClose={() => setIsSelfEsteemQuizOpen(false)} />
+      <MemoryGame isOpen={isMemoryGameOpen} onClose={() => setIsMemoryGameOpen(false)} />
     </Layout>
   );
 };
@@ -241,42 +255,10 @@ interface AssessmentCardProps {
   title: string;
   description: string;
   id: string;
+  onOpen: () => void;
 }
 
-const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id }) => {
-  const handleQuiz = () => {
-    // For now, show a toast notification as a placeholder for quiz functionality
-    switch(id) {
-      case 'stress-quiz':
-        toast({
-          title: "Stress Quiz Started",
-          description: "The stress assessment quiz is now available. Answer questions to evaluate your stress levels.",
-          duration: 3000,
-        });
-        break;
-      case 'self-esteem-quiz':
-        toast({
-          title: "Self-Esteem Quiz Started",
-          description: "The self-esteem assessment quiz is now available. Answer questions to evaluate your self-confidence.",
-          duration: 3000,
-        });
-        break;
-      case 'memory-game':
-        toast({
-          title: "Memory Game Started",
-          description: "The memory game is loading. Test and improve your memory skills.",
-          duration: 3000,
-        });
-        break;
-      default:
-        toast({
-          title: "Quiz Started",
-          description: "Your assessment quiz is now ready to take.",
-          duration: 3000,
-        });
-    }
-  };
-
+const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id, onOpen }) => {
   return (
     <div className="rounded-xl overflow-hidden shadow-sm border border-perself-primary/20 hover:border-perself-primary/40 transition-all hover-lift">
       <div className="bg-gradient-to-r from-perself-primary to-perself-secondary text-white p-4">
@@ -289,7 +271,7 @@ const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id 
         <Button 
           variant="outline" 
           className="w-full rounded-lg border-perself-primary/30 hover:bg-perself-primary/10"
-          onClick={handleQuiz}
+          onClick={onOpen}
         >
           Take the Quiz
         </Button>
