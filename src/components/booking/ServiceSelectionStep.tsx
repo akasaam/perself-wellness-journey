@@ -18,7 +18,7 @@ const ServiceSelectionStep: React.FC = () => {
         )}
         onClick={() => setService("counselling")}
       >
-        <div className="flex items-start">
+        <div className="flex items-center">
           <Brain className="h-6 w-6 text-perself-primary mr-4" />
           <div>
             <h3 className="font-semibold mb-1">Counselling & Therapy</h3>
@@ -39,7 +39,7 @@ const ServiceSelectionStep: React.FC = () => {
         )}
         onClick={() => setService("healing")}
       >
-        <div className="flex items-start">
+        <div className="flex items-center">
           <Heart className="h-6 w-6 text-perself-primary mr-4" />
           <div>
             <h3 className="font-semibold mb-1">Healing Modalities</h3>
@@ -60,7 +60,7 @@ const ServiceSelectionStep: React.FC = () => {
         )}
         onClick={() => setService("assessment")}
       >
-        <div className="flex items-start">
+        <div className="flex items-center">
           <CheckCircle className="h-6 w-6 text-perself-primary mr-4" />
           <div>
             <h3 className="font-semibold mb-1">Assessments & Tools</h3>
