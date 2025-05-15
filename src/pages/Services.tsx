@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
@@ -7,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Brain, Heart } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("counselling");
@@ -167,16 +167,19 @@ const Services = () => {
                     <AssessmentCard 
                       title="Are You Stressed Out? Quiz"
                       description="Evaluate your current stress levels and identify potential stressors in your life."
+                      id="stress-quiz"
                     />
                     
                     <AssessmentCard 
                       title="How Do You Rate Your Self-Esteem? Quiz"
                       description="Assess your self-esteem levels and get personalized recommendations to build confidence."
+                      id="self-esteem-quiz"
                     />
                     
                     <AssessmentCard 
                       title="Memory Game"
                       description="A fun interactive game to test and improve your memory while promoting mindfulness."
+                      id="memory-game"
                     />
                   </div>
                 </div>
@@ -237,9 +240,43 @@ const HealingBadge: React.FC<HealingBadgeProps> = ({ children }) => {
 interface AssessmentCardProps {
   title: string;
   description: string;
+  id: string;
 }
 
-const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description }) => {
+const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id }) => {
+  const handleQuiz = () => {
+    // For now, show a toast notification as a placeholder for quiz functionality
+    switch(id) {
+      case 'stress-quiz':
+        toast({
+          title: "Stress Quiz Started",
+          description: "The stress assessment quiz is now available. Answer questions to evaluate your stress levels.",
+          duration: 3000,
+        });
+        break;
+      case 'self-esteem-quiz':
+        toast({
+          title: "Self-Esteem Quiz Started",
+          description: "The self-esteem assessment quiz is now available. Answer questions to evaluate your self-confidence.",
+          duration: 3000,
+        });
+        break;
+      case 'memory-game':
+        toast({
+          title: "Memory Game Started",
+          description: "The memory game is loading. Test and improve your memory skills.",
+          duration: 3000,
+        });
+        break;
+      default:
+        toast({
+          title: "Quiz Started",
+          description: "Your assessment quiz is now ready to take.",
+          duration: 3000,
+        });
+    }
+  };
+
   return (
     <div className="rounded-xl overflow-hidden shadow-sm border border-perself-primary/20 hover:border-perself-primary/40 transition-all hover-lift">
       <div className="bg-gradient-to-r from-perself-primary to-perself-secondary text-white p-4">
@@ -249,7 +286,11 @@ const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description }) =
         <p className="mb-4 text-muted-foreground">
           {description}
         </p>
-        <Button variant="outline" className="w-full rounded-lg border-perself-primary/30 hover:bg-perself-primary/10">
+        <Button 
+          variant="outline" 
+          className="w-full rounded-lg border-perself-primary/30 hover:bg-perself-primary/10"
+          onClick={handleQuiz}
+        >
           Take the Quiz
         </Button>
       </div>
