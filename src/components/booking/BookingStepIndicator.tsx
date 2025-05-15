@@ -3,44 +3,60 @@ import React from "react";
 import { CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useBookingContext } from "@/contexts/BookingContext";
+import { Progress } from "@/components/ui/progress";
 
 const BookingStepIndicator: React.FC = () => {
   const { step } = useBookingContext();
+  
+  // Calculate progress percentage
+  const progressPercentage = ((step - 1) / 3) * 100;
+  
+  const steps = [
+    { number: 1, label: "Select Service" },
+    { number: 2, label: "Choose Practitioner" },
+    { number: 3, label: "Pick Date & Time" },
+    { number: 4, label: "Your Information" },
+  ];
 
   return (
-    <div className="flex justify-between mb-10 relative">
-      <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
-      {[1, 2, 3, 4].map((i) => (
-        <div
-          key={i}
-          className={cn(
-            "relative z-10 flex flex-col items-center",
-            step >= i ? "text-perself-primary" : "text-gray-400"
-          )}
-        >
+    <div className="mb-10 relative">
+      {/* Progress bar using shadcn UI Progress component */}
+      <div className="px-4 md:px-12 mb-7">
+        <Progress value={progressPercentage} className="h-1 bg-gray-200" />
+      </div>
+      
+      {/* Step indicators */}
+      <div className="flex justify-between px-4 md:px-12">
+        {steps.map((stepItem) => (
           <div
+            key={stepItem.number}
             className={cn(
-              "w-10 h-10 rounded-full flex items-center justify-center mb-2",
-              step > i
-                ? "bg-perself-primary text-white"
-                : step === i
-                ? "bg-white text-perself-primary border-2 border-perself-primary"
-                : "bg-white text-gray-400 border-2 border-gray-300"
+              "flex flex-col items-center relative -mt-5",
+              step >= stepItem.number ? "text-perself-primary" : "text-gray-400"
             )}
           >
-            {step > i ? <CheckCircle className="h-5 w-5" /> : <span>{i}</span>}
+            <div
+              className={cn(
+                "w-10 h-10 rounded-full flex items-center justify-center",
+                step > stepItem.number
+                  ? "bg-perself-primary text-white"
+                  : step === stepItem.number
+                  ? "bg-white text-perself-primary border-2 border-perself-primary"
+                  : "bg-white text-gray-400 border-2 border-gray-300"
+              )}
+            >
+              {step > stepItem.number ? (
+                <CheckCircle className="h-5 w-5" />
+              ) : (
+                <span>{stepItem.number}</span>
+              )}
+            </div>
+            <span className="text-xs font-medium mt-2 text-center hidden md:block">
+              {stepItem.label}
+            </span>
           </div>
-          <span className="text-xs font-medium hidden md:block">
-            {i === 1
-              ? "Select Service"
-              : i === 2
-              ? "Choose Practitioner"
-              : i === 3
-              ? "Pick Date & Time"
-              : "Your Information"}
-          </span>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
