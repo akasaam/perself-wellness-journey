@@ -61,7 +61,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Button */}
         <button 
-          className="md:hidden relative z-20" 
+          className="md:hidden relative z-20 p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 transition-colors" 
           onClick={toggleMenu} 
           aria-label="Menu"
         >
@@ -73,49 +73,56 @@ const Navbar = () => {
         </button>
 
         {/* Mobile Navigation Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-background/95 backdrop-blur-md z-10 flex items-center justify-center">
-            <nav className="flex flex-col items-center space-y-8 w-full px-6">
-              <NavLink 
-                to="/" 
-                currentPath={location.pathname} 
-                onClick={toggleMenu} 
-                mobile
-              >
-                Home
-              </NavLink>
-              <NavLink 
-                to="/about" 
-                currentPath={location.pathname} 
-                onClick={toggleMenu} 
-                mobile
-              >
-                About Us
-              </NavLink>
-              <NavLink 
-                to="/services" 
-                currentPath={location.pathname}  
-                onClick={toggleMenu}
-                mobile
-              >
-                Services
-              </NavLink>
-              <NavLink 
-                to="/contact" 
-                currentPath={location.pathname}  
-                onClick={toggleMenu}
-                mobile
-              >
-                Contact
-              </NavLink>
-              <Link to="/booking" onClick={toggleMenu} className="w-full">
-                <Button className="w-full py-4 text-lg mt-4">
-                  Book a Session
-                </Button>
-              </Link>
-            </nav>
-          </div>
-        )}
+        <div 
+          className={cn(
+            "md:hidden fixed inset-0 bg-background/95 backdrop-blur-md z-10 flex items-center justify-center transition-all duration-300",
+            isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          )}
+        >
+          <nav className="flex flex-col items-center space-y-8 w-full px-8 animate-fade-in">
+            <MobileNavLink 
+              to="/" 
+              currentPath={location.pathname} 
+              onClick={toggleMenu} 
+              delay="delay-100"
+            >
+              Home
+            </MobileNavLink>
+            <MobileNavLink 
+              to="/about" 
+              currentPath={location.pathname} 
+              onClick={toggleMenu} 
+              delay="delay-200"
+            >
+              About Us
+            </MobileNavLink>
+            <MobileNavLink 
+              to="/services" 
+              currentPath={location.pathname}  
+              onClick={toggleMenu}
+              delay="delay-300"
+            >
+              Services
+            </MobileNavLink>
+            <MobileNavLink 
+              to="/contact" 
+              currentPath={location.pathname}  
+              onClick={toggleMenu}
+              delay="delay-400"
+            >
+              Contact
+            </MobileNavLink>
+            <Link 
+              to="/booking" 
+              onClick={toggleMenu} 
+              className="w-full max-w-xs mt-4 opacity-0 animate-fade-in delay-500"
+            >
+              <Button className="w-full py-4 text-lg font-medium shadow-md hover:shadow-lg">
+                Book a Session
+              </Button>
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );
@@ -129,25 +136,46 @@ interface NavLinkProps {
   mobile?: boolean;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children, onClick, mobile }) => {
+const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children, onClick }) => {
   const isActive = currentPath === to;
   
   return (
     <Link
       to={to}
       className={cn(
-        "relative transition-colors duration-200 w-full text-center",
-        mobile ? "text-xl py-3 font-medium" : "text-sm font-medium",
+        "relative transition-colors duration-200 text-sm font-medium",
         isActive ? "text-primary font-medium" : "text-foreground/80 hover:text-primary"
       )}
       onClick={onClick}
     >
       {children}
       {isActive && (
-        <div className={cn(
-          "h-0.5 bg-primary absolute",
-          mobile ? "-bottom-2 left-1/4 w-1/2" : "-bottom-1 left-0 w-full"
-        )}></div>
+        <div className="h-0.5 w-full bg-primary absolute -bottom-1 left-0 transition-all duration-200"></div>
+      )}
+    </Link>
+  );
+};
+
+interface MobileNavLinkProps extends NavLinkProps {
+  delay: string;
+}
+
+const MobileNavLink: React.FC<MobileNavLinkProps> = ({ to, currentPath, children, onClick, delay }) => {
+  const isActive = currentPath === to;
+  
+  return (
+    <Link
+      to={to}
+      className={cn(
+        "relative transition-colors duration-200 w-full max-w-xs text-center py-4 text-xl font-medium opacity-0 animate-fade-in",
+        delay,
+        isActive ? "text-primary font-medium" : "text-foreground/80 hover:text-primary"
+      )}
+      onClick={onClick}
+    >
+      {children}
+      {isActive && (
+        <div className="h-0.5 bg-primary absolute -bottom-2 left-1/4 w-1/2 transition-all duration-300"></div>
       )}
     </Link>
   );
