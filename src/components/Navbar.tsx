@@ -75,7 +75,7 @@ const Navbar = () => {
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
           <div className="md:hidden fixed inset-0 bg-background/95 backdrop-blur-md z-10 flex items-center justify-center">
-            <nav className="flex flex-col items-center space-y-6">
+            <nav className="flex flex-col items-center space-y-8 w-full px-6">
               <NavLink 
                 to="/" 
                 currentPath={location.pathname} 
@@ -108,8 +108,8 @@ const Navbar = () => {
               >
                 Contact
               </NavLink>
-              <Link to="/booking" onClick={toggleMenu}>
-                <Button className="mt-4 w-40">
+              <Link to="/booking" onClick={toggleMenu} className="w-full">
+                <Button className="w-full py-4 text-lg mt-4">
                   Book a Session
                 </Button>
               </Link>
@@ -136,15 +136,18 @@ const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children, onClick, m
     <Link
       to={to}
       className={cn(
-        "relative transition-colors duration-200",
-        mobile ? "text-lg" : "text-sm font-medium",
+        "relative transition-colors duration-200 w-full text-center",
+        mobile ? "text-xl py-3 font-medium" : "text-sm font-medium",
         isActive ? "text-primary font-medium" : "text-foreground/80 hover:text-primary"
       )}
       onClick={onClick}
     >
       {children}
       {isActive && (
-        <div className="h-0.5 w-full bg-primary absolute -bottom-1 left-0"></div>
+        <div className={cn(
+          "h-0.5 bg-primary absolute",
+          mobile ? "-bottom-2 left-1/4 w-1/2" : "-bottom-1 left-0 w-full"
+        )}></div>
       )}
     </Link>
   );

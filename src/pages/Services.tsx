@@ -38,28 +38,28 @@ const Services = () => {
             onValueChange={setActiveTab}
             className="w-full"
           >
-            <div className="flex justify-center mb-12">
-              <TabsList className="rounded-full overflow-hidden shadow-sm w-full max-w-3xl mx-auto bg-muted/30 p-1.5">
+            <div className="flex justify-center mb-12 overflow-x-auto px-2 md:px-0">
+              <TabsList className="rounded-full overflow-hidden shadow-sm w-full max-w-3xl mx-auto bg-muted/30 p-1.5 flex flex-nowrap min-w-0">
                 <TabsTrigger
                   value="counselling"
-                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full whitespace-nowrap flex-1"
                 >
-                  <Brain className="mr-2 h-5 w-5" />
-                  <span>Counselling & Therapy</span>
+                  <Brain className="mr-1 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="truncate text-xs md:text-sm">Counselling</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="healing"
-                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full whitespace-nowrap flex-1"
                 >
-                  <Heart className="mr-2 h-5 w-5" />
-                  <span>Healing Modalities</span>
+                  <Heart className="mr-1 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="truncate text-xs md:text-sm">Healing</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="assessments"
-                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full"
+                  className="data-[state=active]:bg-perself-primary data-[state=active]:text-white py-3 px-4 font-medium transition-all flex items-center justify-center rounded-full whitespace-nowrap flex-1"
                 >
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  <span>Assessments & Tools</span>
+                  <CheckCircle className="mr-1 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                  <span className="truncate text-xs md:text-sm">Assessments</span>
                 </TabsTrigger>
               </TabsList>
             </div>
