@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Quiz } from "lucide-react";
 
 interface StressQuizProps {
   isOpen: boolean;
@@ -104,7 +105,10 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
       return (
         <div className="py-4">
           <h3 className="text-lg font-medium mb-4">Your Results</h3>
-          <div className="p-4 bg-muted rounded-md mb-6">
+          <div className="p-6 bg-gradient-to-r from-perself-accent/20 to-perself-primary/30 rounded-lg mb-6 border border-perself-primary/20 relative overflow-hidden">
+            <div className="absolute -bottom-8 -right-8 text-perself-primary opacity-10">
+              <Quiz size={80} className="transform rotate-12" />
+            </div>
             <p className="text-xl mb-2">Stress Level: <span className="font-bold">{calculateStressLevel()}</span></p>
             <p className="text-muted-foreground">
               Based on your responses, you appear to be experiencing a {calculateStressLevel().toLowerCase()} level of stress. 
@@ -120,8 +124,24 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
     const question = questions[currentQuestion];
     return (
       <div className="py-4">
-        <h3 className="text-lg font-medium mb-4">Question {currentQuestion + 1} of {questions.length}</h3>
-        <p className="mb-4">{question.question}</p>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-medium">Question {currentQuestion + 1} of {questions.length}</h3>
+          <div className="flex gap-1">
+            {questions.map((_, index) => (
+              <div 
+                key={index} 
+                className={`w-2 h-2 rounded-full ${
+                  index === currentQuestion 
+                    ? "bg-perself-primary" 
+                    : index < currentQuestion 
+                      ? "bg-perself-primary/40" 
+                      : "bg-gray-200"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        <p className="mb-4 text-lg">{question.question}</p>
         
         <RadioGroup 
           value={answers[currentQuestion] || ""} 
@@ -129,7 +149,10 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
           className="space-y-3"
         >
           {question.options.map((option) => (
-            <div key={option} className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/50">
+            <div 
+              key={option} 
+              className="flex items-center space-x-2 border p-3 rounded-md hover:bg-muted/50 transition-colors hover:border-perself-primary/30"
+            >
               <RadioGroupItem value={option} id={option} />
               <Label htmlFor={option} className="flex-grow cursor-pointer">{option}</Label>
             </div>
@@ -142,8 +165,14 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Stress Assessment Quiz</DialogTitle>
+        <DialogHeader className="relative">
+          <div className="absolute -top-10 -left-10 w-20 h-20 text-perself-primary opacity-15">
+            <Quiz size={80} className="transform -rotate-12" />
+          </div>
+          <DialogTitle className="flex items-center gap-2">
+            <Quiz className="h-5 w-5 text-perself-primary" />
+            Stress Assessment Quiz
+          </DialogTitle>
           <DialogDescription>
             Answer the following questions honestly to evaluate your current stress levels.
           </DialogDescription>
@@ -159,6 +188,7 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
                 variant="outline" 
                 onClick={handlePreviousQuestion} 
                 disabled={currentQuestion === 0}
+                className="border-perself-primary/30 hover:bg-perself-primary/10"
               >
                 Previous
               </Button>
@@ -166,12 +196,17 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
                 type="button" 
                 onClick={handleNextQuestion} 
                 disabled={!answers[currentQuestion]}
+                className="bg-gradient-to-r from-perself-primary to-perself-secondary"
               >
                 {currentQuestion === questions.length - 1 ? "See Results" : "Next"}
               </Button>
             </>
           ) : (
-            <Button type="button" onClick={handleFinish} className="w-full">
+            <Button 
+              type="button" 
+              onClick={handleFinish} 
+              className="w-full bg-gradient-to-r from-perself-primary to-perself-secondary"
+            >
               Finish
             </Button>
           )}

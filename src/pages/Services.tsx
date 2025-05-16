@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
@@ -5,7 +6,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Brain, Heart } from "lucide-react";
+import { CheckCircle, Brain, Heart, Puzzle, Quiz, StarHalf } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import StressQuiz from "@/components/quizzes/StressQuiz";
 import SelfEsteemQuiz from "@/components/quizzes/SelfEsteemQuiz";
@@ -159,6 +160,9 @@ const Services = () => {
                     alt="Assessments and tools"
                     className="rounded-2xl shadow-md relative z-10"
                   />
+                  <div className="absolute -bottom-6 right-6">
+                    <Puzzle size={60} className="text-perself-primary/30 transform rotate-12" />
+                  </div>
                 </div>
                 <div>
                   <SectionTitle title="Assessments & Interactive Tools" variant="gradient" />
@@ -169,11 +173,16 @@ const Services = () => {
                     step in understanding your mental health needs.
                   </p>
 
-                  <div className="space-y-6 mb-8">
+                  <div className="space-y-6 mb-8 relative">
+                    <div className="absolute -right-16 top-20 z-0">
+                      <Quiz size={120} className="text-perself-primary/10 transform -rotate-12" />
+                    </div>
+                    
                     <AssessmentCard 
                       title="Are You Stressed Out? Quiz"
                       description="Evaluate your current stress levels and identify potential stressors in your life."
                       id="stress-quiz"
+                      icon={<Quiz className="w-10 h-10" />}
                       onOpen={() => setIsStressQuizOpen(true)}
                     />
                     
@@ -181,6 +190,7 @@ const Services = () => {
                       title="How Do You Rate Your Self-Esteem? Quiz"
                       description="Assess your self-esteem levels and get personalized recommendations to build confidence."
                       id="self-esteem-quiz"
+                      icon={<StarHalf className="w-10 h-10" />}
                       onOpen={() => setIsSelfEsteemQuizOpen(true)}
                     />
                     
@@ -188,6 +198,7 @@ const Services = () => {
                       title="Memory Game"
                       description="A fun interactive game to test and improve your memory while promoting mindfulness."
                       id="memory-game"
+                      icon={<Puzzle className="w-10 h-10" />}
                       onOpen={() => setIsMemoryGameOpen(true)}
                     />
                   </div>
@@ -255,22 +266,26 @@ interface AssessmentCardProps {
   title: string;
   description: string;
   id: string;
+  icon: React.ReactNode;
   onOpen: () => void;
 }
 
-const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id, onOpen }) => {
+const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id, icon, onOpen }) => {
   return (
-    <div className="rounded-xl overflow-hidden shadow-sm border border-perself-primary/20 hover:border-perself-primary/40 transition-all hover-lift">
-      <div className="bg-gradient-to-r from-perself-primary to-perself-secondary text-white p-4">
+    <div className="rounded-xl overflow-hidden shadow-md border border-perself-primary/20 hover:border-perself-primary/40 transition-all hover-lift hover:shadow-lg relative z-10">
+      <div className="bg-gradient-to-r from-perself-primary to-perself-secondary text-white p-4 flex items-center gap-3">
+        <div className="p-2 bg-white/20 rounded-full">
+          {icon}
+        </div>
         <h4 className="font-semibold">{title}</h4>
       </div>
-      <div className="p-4 bg-white">
-        <p className="mb-4 text-muted-foreground">
+      <div className="p-6 bg-white bg-gradient-to-br from-white to-perself-light/30">
+        <p className="mb-6 text-muted-foreground">
           {description}
         </p>
         <Button 
           variant="outline" 
-          className="w-full rounded-lg border-perself-primary/30 hover:bg-perself-primary/10"
+          className="w-full rounded-lg border-perself-primary/30 hover:bg-perself-primary/10 font-medium text-perself-primary hover:text-perself-primary"
           onClick={onOpen}
         >
           Take the Quiz
