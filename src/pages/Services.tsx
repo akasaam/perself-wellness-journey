@@ -6,7 +6,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Brain, Heart, Puzzle, Quiz, StarHalf } from "lucide-react";
+import { CheckCircle, Brain, Heart, Puzzle, ClipboardCheck, StarHalf } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import StressQuiz from "@/components/quizzes/StressQuiz";
 import SelfEsteemQuiz from "@/components/quizzes/SelfEsteemQuiz";
@@ -175,14 +175,14 @@ const Services = () => {
 
                   <div className="space-y-6 mb-8 relative">
                     <div className="absolute -right-16 top-20 z-0">
-                      <Quiz size={120} className="text-perself-primary/10 transform -rotate-12" />
+                      <ClipboardCheck size={120} className="text-perself-primary/10 transform -rotate-12" />
                     </div>
                     
                     <AssessmentCard 
                       title="Are You Stressed Out? Quiz"
                       description="Evaluate your current stress levels and identify potential stressors in your life."
                       id="stress-quiz"
-                      icon={<Quiz className="w-10 h-10" />}
+                      icon={<ClipboardCheck className="w-10 h-10" />}
                       onOpen={() => setIsStressQuizOpen(true)}
                     />
                     

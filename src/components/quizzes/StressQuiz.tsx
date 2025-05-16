@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Quiz } from "lucide-react";
+import { ClipboardCheck } from "lucide-react";
 
 interface StressQuizProps {
   isOpen: boolean;
@@ -107,7 +107,7 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
           <h3 className="text-lg font-medium mb-4">Your Results</h3>
           <div className="p-6 bg-gradient-to-r from-perself-accent/20 to-perself-primary/30 rounded-lg mb-6 border border-perself-primary/20 relative overflow-hidden">
             <div className="absolute -bottom-8 -right-8 text-perself-primary opacity-10">
-              <Quiz size={80} className="transform rotate-12" />
+              <ClipboardCheck size={80} className="transform rotate-12" />
             </div>
             <p className="text-xl mb-2">Stress Level: <span className="font-bold">{calculateStressLevel()}</span></p>
             <p className="text-muted-foreground">
@@ -167,10 +167,10 @@ const StressQuiz: React.FC<StressQuizProps> = ({ isOpen, onClose }) => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="relative">
           <div className="absolute -top-10 -left-10 w-20 h-20 text-perself-primary opacity-15">
-            <Quiz size={80} className="transform -rotate-12" />
+            <ClipboardCheck size={80} className="transform -rotate-12" />
           </div>
           <DialogTitle className="flex items-center gap-2">
-            <Quiz className="h-5 w-5 text-perself-primary" />
+            <ClipboardCheck className="h-5 w-5 text-perself-primary" />
             Stress Assessment Quiz
           </DialogTitle>
           <DialogDescription>
