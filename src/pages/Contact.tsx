@@ -67,10 +67,10 @@ const Contact = () => {
                 Speak directly with our team
               </p>
               <a
-                href="tel:+11234567890"
+                href="tel:+919832739564"
                 className="text-perself-primary font-medium hover:text-perself-dark"
               >
-                +1 (123) 456-7890
+                +91 98327 39564
               </a>
             </div>
 
@@ -83,10 +83,10 @@ const Contact = () => {
                 Send us a message anytime
               </p>
               <a
-                href="mailto:info@perselfmindcare.com"
+                href="mailto:growperself@gmail.com"
                 className="text-perself-primary font-medium hover:text-perself-dark"
               >
-                info@perselfmindcare.com
+                growperself@gmail.com
               </a>
             </div>
 
@@ -99,8 +99,10 @@ const Contact = () => {
                 Come to our wellness center
               </p>
               <address className="not-italic text-perself-primary">
-                123 Wellness Street<br />
-                Mindful City, MC 12345
+                Perself- Mind Care<br />
+                Akshaytara Apartment, Sevoke Rd<br />
+                Ward 41, Don Bosco Colony<br />
+                Siliguri, West Bengal 734001
               </address>
             </div>
           </div>
@@ -236,9 +238,9 @@ const Contact = () => {
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-sm h-[500px]">
-              {/* Google Maps Embed */}
+              {/* Google Maps Embed - Updated to Siliguri location */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276293250197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2s!4v1623309486119!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28537.91014875909!2d88.40748716380662!3d26.712122208204092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e44102f2b2390f%3A0xe71120fdbe30d01f!2sDon%20Bosco%20Colony%2C%20Siliguri%2C%20West%20Bengal%20734001!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

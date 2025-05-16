@@ -69,18 +69,18 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="mr-3 h-4 w-4 text-primary shrink-0 mt-1" />
-                <span className="text-muted-foreground text-sm">123 Wellness Street, Mindful City, MC 12345</span>
+                <span className="text-muted-foreground text-sm">Perself- Mind Care, Akshaytara Apartment, Sevoke Rd, Ward 41, Don Bosco Colony, Siliguri, West Bengal 734001</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-3 h-4 w-4 text-primary" />
-                <a href="tel:+11234567890" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  +1 (123) 456-7890
+                <a href="tel:+919832739564" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  +91 98327 39564
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-3 h-4 w-4 text-primary" />
-                <a href="mailto:info@perselfmindcare.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  info@perselfmindcare.com
+                <a href="mailto:growperself@gmail.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  growperself@gmail.com
                 </a>
               </li>
             </ul>
