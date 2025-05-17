@@ -150,58 +150,43 @@ const Services = () => {
               </div>
             </TabsContent>
 
-            {/* Assessments & Tools Content */}
+            {/* Assessments & Tools Content - Modified layout for mobile */}
             <TabsContent value="assessments" className="animate-fade-in">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div className="relative">
-                  <div className="absolute -top-6 -left-6 w-40 h-40 bg-perself-primary/20 rounded-full blur-3xl"></div>
-                  <img
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                    alt="Assessments and tools"
-                    className="rounded-2xl shadow-md relative z-10"
-                  />
-                  <div className="absolute -bottom-6 right-6">
-                    <Puzzle size={60} className="text-perself-primary/30 transform rotate-12" />
-                  </div>
-                </div>
-                <div>
+              <div className="w-full max-w-4xl mx-auto">
+                <div className="text-center mb-8">
                   <SectionTitle title="Assessments & Interactive Tools" variant="gradient" />
-                  <p className="text-lg mb-6">
+                  <p className="text-lg mb-6 max-w-2xl mx-auto">
                     Take advantage of our interactive assessments and tools
                     designed to help you gain insights into your mental
                     well-being. These self-assessment quizzes can be a first
                     step in understanding your mental health needs.
                   </p>
+                </div>
 
-                  <div className="space-y-6 mb-8 relative">
-                    <div className="absolute -right-16 top-20 z-0">
-                      <ClipboardCheck size={120} className="text-perself-primary/10 transform -rotate-12" />
-                    </div>
-                    
-                    <AssessmentCard 
-                      title="Are You Stressed Out? Quiz"
-                      description="Evaluate your current stress levels and identify potential stressors in your life."
-                      id="stress-quiz"
-                      icon={<ClipboardCheck className="w-10 h-10" />}
-                      onOpen={() => setIsStressQuizOpen(true)}
-                    />
-                    
-                    <AssessmentCard 
-                      title="How Do You Rate Your Self-Esteem? Quiz"
-                      description="Assess your self-esteem levels and get personalized recommendations to build confidence."
-                      id="self-esteem-quiz"
-                      icon={<StarHalf className="w-10 h-10" />}
-                      onOpen={() => setIsSelfEsteemQuizOpen(true)}
-                    />
-                    
-                    <AssessmentCard 
-                      title="Memory Game"
-                      description="A fun interactive game to test and improve your memory while promoting mindfulness."
-                      id="memory-game"
-                      icon={<Puzzle className="w-10 h-10" />}
-                      onOpen={() => setIsMemoryGameOpen(true)}
-                    />
-                  </div>
+                <div className="space-y-6 mb-8 relative">
+                  <AssessmentCard 
+                    title="Are You Stressed Out? Quiz"
+                    description="Evaluate your current stress levels and identify potential stressors in your life."
+                    id="stress-quiz"
+                    icon={<ClipboardCheck className="w-8 h-8" />}
+                    onOpen={() => setIsStressQuizOpen(true)}
+                  />
+                  
+                  <AssessmentCard 
+                    title="How Do You Rate Your Self-Esteem? Quiz"
+                    description="Assess your self-esteem levels and get personalized recommendations to build confidence."
+                    id="self-esteem-quiz"
+                    icon={<StarHalf className="w-8 h-8" />}
+                    onOpen={() => setIsSelfEsteemQuizOpen(true)}
+                  />
+                  
+                  <AssessmentCard 
+                    title="Memory Game"
+                    description="A fun interactive game to test and improve your memory while promoting mindfulness."
+                    id="memory-game"
+                    icon={<Puzzle className="w-8 h-8" />}
+                    onOpen={() => setIsMemoryGameOpen(true)}
+                  />
                 </div>
               </div>
             </TabsContent>
@@ -272,7 +257,7 @@ interface AssessmentCardProps {
 
 const AssessmentCard: React.FC<AssessmentCardProps> = ({ title, description, id, icon, onOpen }) => {
   return (
-    <div className="rounded-xl overflow-hidden shadow-md border border-perself-primary/20 hover:border-perself-primary/40 transition-all hover-lift hover:shadow-lg relative z-10">
+    <div className="rounded-xl overflow-hidden shadow-md border border-perself-primary/20 hover:border-perself-primary/40 transition-all hover-lift hover:shadow-lg">
       <div className="bg-gradient-to-r from-perself-primary to-perself-secondary text-white p-4 flex items-center gap-3">
         <div className="p-2 bg-white/20 rounded-full">
           {icon}
