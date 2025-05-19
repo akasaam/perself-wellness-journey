@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+const MenuOpenContext = React.createContext({ isMenuOpen: false });
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,28 +59,17 @@ const Navbar = () => {
             </Button>
           </Link>
         </nav>
+      </div>
 
-        {/* Mobile Navigation Button */}
-        <button 
-          className="md:hidden relative z-20 p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 transition-colors" 
-          onClick={toggleMenu} 
-          aria-label="Menu"
-        >
-          {isMenuOpen ? (
-            <X className="h-6 w-6 text-primary" />
-          ) : (
-            <Menu className="h-6 w-6 text-primary" />
-          )}
-        </button>
-
-        {/* Mobile Navigation Menu */}
-        <div 
-          className={cn(
-            "md:hidden fixed inset-0 bg-background/95 backdrop-blur-md z-10 flex items-center justify-center transition-all duration-300",
-            isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          )}
-        >
-          <nav className="flex flex-col items-center space-y-8 w-full px-8 animate-fade-in">
+      {/* Mobile Navigation Menu */}
+      <div 
+        className={cn(
+          "md:hidden fixed inset-0 bg-background z-40 flex items-center justify-center transition-all duration-300",
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        )}
+      >
+        <MenuOpenContext.Provider value={{ isMenuOpen }}>
+          <nav className="flex flex-col items-center space-y-8 w-full px-8">
             <MobileNavLink 
               to="/" 
               currentPath={location.pathname} 
@@ -115,15 +105,34 @@ const Navbar = () => {
             <Link 
               to="/booking" 
               onClick={toggleMenu} 
-              className="w-full max-w-xs mt-4 opacity-0 animate-fade-in delay-500"
+              className={cn(
+                "w-full max-w-xs mt-4 animate-fade-in delay-500",
+                isMenuOpen ? "opacity-100" : "opacity-0"
+              )}
             >
               <Button className="w-full py-4 text-lg font-medium shadow-md hover:shadow-lg">
                 Book a Session
               </Button>
             </Link>
           </nav>
-        </div>
+        </MenuOpenContext.Provider>
       </div>
+
+      {/* Mobile Navigation Button - always on top */}
+      <button 
+        className={cn(
+          "md:hidden fixed top-4 right-4 z-50 p-2 rounded-full hover:bg-primary/10 active:bg-primary/20 transition-colors",
+          isMenuOpen && "text-primary"
+        )} 
+        onClick={toggleMenu} 
+        aria-label="Menu"
+      >
+        {isMenuOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
+      </button>
     </header>
   );
 };
@@ -162,14 +171,16 @@ interface MobileNavLinkProps extends NavLinkProps {
 
 const MobileNavLink: React.FC<MobileNavLinkProps> = ({ to, currentPath, children, onClick, delay }) => {
   const isActive = currentPath === to;
-  
+  const { isMenuOpen } = React.useContext(MenuOpenContext); // We'll add this context below
+
   return (
     <Link
       to={to}
       className={cn(
-        "relative transition-colors duration-200 w-full max-w-xs text-center py-4 text-xl font-medium opacity-0 animate-fade-in",
+        "relative transition-colors duration-200 w-full max-w-xs text-center py-4 text-xl font-medium animate-fade-in",
         delay,
-        isActive ? "text-primary font-medium" : "text-foreground/80 hover:text-primary"
+        isActive ? "text-primary font-medium" : "text-foreground/80 hover:text-primary",
+        isMenuOpen ? "opacity-100" : "opacity-0"
       )}
       onClick={onClick}
     >
